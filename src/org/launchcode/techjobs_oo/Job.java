@@ -6,6 +6,8 @@ public class Job {
     private static int nextId = 1;
 
     private String name;
+
+//    Below classes – Location, Location, PositionType and CoreCompetency – each have value and id field;
     private Employer employer;
     private Location location;
     private PositionType positionType;
