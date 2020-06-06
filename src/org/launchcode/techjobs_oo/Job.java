@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo;
 
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class Job {
@@ -25,13 +26,42 @@ public class Job {
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+
         this();
         this.name = name;
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
+
+
+}
+
+
+//     WRITE FOR LOOP HERE TO CHECK FOR EMPTY FIELDS; IF EMPTY ASSIGN "DATA NOT AVAILABLE" AS VALUE
+
+
+//    TODO: Add toString() method
+    @Override
+    public String toString() {
+
+        if (this.name == null) {
+            this.name = "Data not available";
+        } else if ((this.getEmployer().getValue() == null) || (this.getEmployer().getValue().equals(""))) {
+            setEmployer(new Employer ("Data not available"));
+        } else if ((this.getLocation().getValue() == null) || (this.getLocation().getValue().equals(""))) {
+            setLocation(new Location ("Data not available"));
+        } else if ((this.getPositionType().getValue() == null) || (this.getPositionType().getValue().equals(""))) {
+            setPositionType(new PositionType ("Data not available"));
+        } else if ((this.getCoreCompetency().getValue() == null) || (this.getCoreCompetency().getValue().equals(""))) {
+            setCoreCompetency(new CoreCompetency ("Data not available"));
+        }
+
+
+
+        return "\n" + "ID: " + getId() + "\n" + "Name: " + getName() + "\n" + "Employer: " + getEmployer() + "\n" + "Location: " + getLocation() + "\n" + "Position Type: " + getPositionType() + "\n" + "Core Competency: " + getCoreCompetency() + "\n" + "\n";
     }
+
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
